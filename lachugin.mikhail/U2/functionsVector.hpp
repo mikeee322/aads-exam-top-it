@@ -25,6 +25,7 @@ namespace lachugin
   void meets(const Vector< Meeting >& meetings, size_t id);
   void less(const Vector< Meeting >& meetings, size_t time, size_t id);
 
+
 }
 
 

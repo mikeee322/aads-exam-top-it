@@ -10,6 +10,12 @@ namespace lachugin
     size_t time;
   };
 
+  struct MeetInfo
+  {
+    size_t id;
+    size_t time;
+  };
+
 }
 
 #endif
