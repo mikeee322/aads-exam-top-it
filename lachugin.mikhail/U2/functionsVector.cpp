@@ -175,4 +175,19 @@ namespace lachugin
     }
   }
 
+  void addMeeting(Vector< Meeting >& meetings, size_t firstId, size_t secondId, size_t time)
+  {
+    if (firstId == secondId)
+    {
+      return;
+    }
+
+    Meeting meeting;
+    meeting.firstId = firstId;
+    meeting.secondId = secondId;
+    meeting.time = time;
+
+    pushBack(meetings, meeting);
+  }
+
 }

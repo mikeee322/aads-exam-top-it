@@ -14,6 +14,7 @@ namespace lachugin
   Person* findPerson(Vector< Person >& persons, size_t id);
   const Person* findPerson(const Vector< Person >& persons, size_t id);
   void addPerson(Vector< Person >& persons, size_t id);
+  void addMeeting(Vector< Meeting >& meetings, size_t firstId, size_t secondId, size_t time);
 
   void desc(const Vector< Person >& persons, size_t id);
   void redesc(Vector< Person >& persons, size_t id, const std::string& info);
