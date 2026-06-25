@@ -19,4 +19,17 @@ namespace lachugin
     size++;
   }
 
+  bool containsId(const Person *persons, size_t size, size_t id)
+  {
+    for (size_t i = 0; i < size; i++)
+    {
+      if (persons[i].id == id)
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
 }
