@@ -1,4 +1,5 @@
 #include "functionsVector.hpp"
+#include "fstream"
 namespace lachugin
 {
   bool readMeeting(std::istream& in, Meeting& meeting)
@@ -143,9 +144,7 @@ namespace lachugin
       {
         if (ids.data[j] < ids.data[i])
         {
-          size_t temp = ids.data[i];
-          ids.data[i] = ids.data[j];
-          ids.data[j] = temp;
+          size_t temp = ids.data[i]; ids.data[i] = ids.data[j]; ids.data[j] = temp;
         }
       }
     }
@@ -156,6 +155,24 @@ namespace lachugin
     }
 
     clearVector(ids);
+  }
+
+  void outPersons(const Vector< Person >& persons, const std::string& filename)
+  {
+    std::ofstream out(filename);
+
+    if (!out)
+    {
+      std::cout << "INVALID COMMAND\n";
+      return;
+    }
+    for (size_t i = 0; i < persons.size; i++)
+    {
+      if (!persons.data[i].info.empty())
+      {
+        out << persons.data[i].id << ' ' << persons.data[i].info << '\n';
+      }
+    }
   }
 
 }
