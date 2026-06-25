@@ -24,7 +24,19 @@ namespace lachugin
   void pushBack(Vector< T >& vector, const T& value);
 
   template< class T >
-  void resizeVector(Vector< T >& vector);
+  void resizeVector(Vector< T >& vector)
+  {
+    size_t newCapacity = vector.capacity * 2;
+    T* newData = new T[newCapacity];
+
+    for (size_t i = 0; i < vector.size; i++)
+    {
+      newData[i] = vector.data[i];
+    }
+    delete[] vector.data;
+    vector.data = newData;
+    vector.capacity = newCapacity;
+  }
 
   template< class T >
   void clearVector(Vector< T >& vector);
