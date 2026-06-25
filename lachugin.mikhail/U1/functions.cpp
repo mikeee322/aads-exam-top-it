@@ -31,5 +31,36 @@ namespace lachugin
     return false;
   }
 
+  bool parseLine(const std::string& line, Person& person)
+  {
+    size_t index = 0;
+    while (index < line.size() && std::isdigit(line[index]))
+    {
+      index++;
+    }
+
+    if (index == 0)
+    {
+      return false;
+    }
+    if (index < line.size() && !std::isspace(line[index]))
+    {
+      return false;
+    }
+    person.id = std::stoull(line.substr(0, index));
+    while (index < line.size() && std::isspace(line[index]))
+    {
+      index++;
+    }
+    if (index == line.size())
+    {
+      return false;
+    }
+
+    person.info = line.substr(index);
+    return true;
+  }
+
+
 
 }
