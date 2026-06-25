@@ -13,4 +13,17 @@ namespace lachugin
     return true;
   }
 
+  bool containsPerson(const Vector< Person >& persons, size_t id)
+  {
+    for (size_t i = 0; i < persons.size; i++)
+    {
+      if (persons.data[i].id == id)
+      {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
 }
