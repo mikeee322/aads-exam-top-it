@@ -1,4 +1,4 @@
-#include "functions.hpp"
+#include "functionsVector.hpp"
 namespace lachugin
 {
   bool readMeeting(std::istream& in, Meeting& meeting)
@@ -50,6 +50,39 @@ namespace lachugin
     person.id = id;
     person.info = "";
     pushBack(persons, person);
+  }
+
+  void lachugin::readPersons(std::istream& in,
+    Vector< Person >& persons,
+    size_t& success,
+    size_t& ignored)
+  {
+    std::string line;
+
+    while (std::getline(in, line))
+    {
+      if (line.empty())
+      {
+        continue;
+      }
+
+      Person person;
+
+      if (!parseLine(line, person))
+      {
+        ignored++;
+        continue;
+      }
+
+      if (containsPerson(persons, person.id))
+      {
+        ignored++;
+        continue;
+      }
+
+      pushBack(persons, person);
+      success++;
+    }
   }
 
 }

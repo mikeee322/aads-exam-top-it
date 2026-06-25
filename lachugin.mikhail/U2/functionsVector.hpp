@@ -1,9 +1,10 @@
-#ifndef FUNCTIONS_HPP
-#define FUNCTIONS_HPP
+#ifndef FUNCTIONS_VECTOR_HPP
+#define FUNCTIONS_VECTOR_HPP
 #include "Vector.hpp"
 #include "Meeting.hpp"
 #include "Person.hpp"
 #include <iostream>
+#include "../U1/functions.hpp"
 
 namespace lachugin
 {
