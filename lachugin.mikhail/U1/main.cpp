@@ -5,6 +5,11 @@
 
 int main(int argc, char* argv[])
 {
+  if (argc > 3)
+  {
+    return 1;
+  }
+
   lachugin::Person* persons = nullptr;
   size_t size = 0;
   size_t capacity = 0;
@@ -17,10 +22,7 @@ int main(int argc, char* argv[])
   bool hasInput = false;
   bool hasOutput = false;
 
-  if (argc > 3)
-  {
-    return 1;
-  }
+
 
   for (int i = 1; i < argc; i++)
   {
@@ -102,7 +104,11 @@ int main(int argc, char* argv[])
   {
     *output << persons[i].id << ' ' << persons[i].info << '\n';
   }
-  if (success != 0 || ignored != 0)
+  if (success == 0 && ignored == 0)
+  {
+    std::cerr << '\n';
+  }
+  else
   {
     std::cerr << success << ' ' << ignored << '\n';
   }
