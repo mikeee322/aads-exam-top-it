@@ -3,7 +3,20 @@ namespace lachugin
 {
   void pushBack(Person*& persons, size_t& size, size_t& capacity, const Person& person)
   {
-
+    if (size == capacity)
+    {
+      size_t newCapacity = (capacity == 0) ? 1 : capacity * 2;
+      Person* newPersons = new Person[newCapacity];
+      for (size_t i = 0; i < size; i++)
+      {
+        newPersons[i] = persons[i];
+      }
+      delete[] persons;
+      persons = newPersons;
+      capacity = newCapacity;
+    }
+    persons[size] = person;
+    size++;
   }
 
 }
