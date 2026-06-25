@@ -17,6 +17,7 @@ namespace lachugin
 
   void desc(const Vector< Person >& persons, size_t id);
   void redesc(Vector< Person >& persons, size_t id, const std::string& info);
+  void anons(const Vector< Person >& persons);
 
 }
 

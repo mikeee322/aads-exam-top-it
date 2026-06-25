@@ -125,4 +125,37 @@ namespace lachugin
     person->info = info;
   }
 
+  void anons(const Vector< Person >& persons)
+  {
+    Vector< size_t > ids;
+    initVector(ids);
+    for (size_t i = 0; i < persons.size; i++)
+    {
+      if (persons.data[i].info.empty())
+      {
+        pushBack(ids, persons.data[i].id);
+      }
+    }
+
+    for (size_t i = 0; i < ids.size; i++)
+    {
+      for (size_t j = i + 1; j < ids.size; j++)
+      {
+        if (ids.data[j] < ids.data[i])
+        {
+          size_t temp = ids.data[i];
+          ids.data[i] = ids.data[j];
+          ids.data[j] = temp;
+        }
+      }
+    }
+
+    for (size_t i = 0; i < ids.size; i++)
+    {
+      std::cout << ids.data[i] << '\n';
+    }
+
+    clearVector(ids);
+  }
+
 }
