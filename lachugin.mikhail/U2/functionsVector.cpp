@@ -52,13 +52,9 @@ namespace lachugin
     pushBack(persons, person);
   }
 
-  void lachugin::readPersons(std::istream& in,
-    Vector< Person >& persons,
-    size_t& success,
-    size_t& ignored)
+  void readPersons(std::istream& in, Vector< Person >& persons, size_t& success, size_t& ignored)
   {
     std::string line;
-
     while (std::getline(in, line))
     {
       if (line.empty())
@@ -67,7 +63,6 @@ namespace lachugin
       }
 
       Person person;
-
       if (!parseLine(line, person))
       {
         ignored++;
@@ -83,6 +78,28 @@ namespace lachugin
       pushBack(persons, person);
       success++;
     }
+  }
+
+  void desc(const Vector< Person >& persons, size_t id)
+  {
+    for (size_t i = 0; i < persons.size; i++)
+    {
+      if (persons.data[i].id == id)
+      {
+        if (persons.data[i].info.empty())
+        {
+          std::cout << "<ANON>\n";
+        }
+        else
+        {
+          std::cout << persons.data[i].info << '\n';
+        }
+
+        return;
+      }
+    }
+
+    std::cout << "INVALID COMMAND\n";
   }
 
 }
