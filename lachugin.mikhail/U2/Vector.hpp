@@ -21,7 +21,16 @@ namespace lachugin
   }
 
   template< class T >
-  void pushBack(Vector< T >& vector, const T& value);
+  void pushBack(Vector< T >& vector, const T& value)
+  {
+    if (vector.size == vector.capacity)
+    {
+      resizeVector(vector);
+    }
+
+    vector.data[vector.size] = value;
+    vector.size++;
+  }
 
   template< class T >
   void resizeVector(Vector< T >& vector)
