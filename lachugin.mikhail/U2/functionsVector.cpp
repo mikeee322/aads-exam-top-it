@@ -190,7 +190,7 @@ namespace lachugin
     pushBack(meetings, meeting);
   }
 
-  void lachugin::meets(const Vector< Meeting >& meetings, size_t id)
+  void meets(const Vector< Meeting >& meetings, size_t id)
   {
     Vector< MeetInfo > result;
     initVector(result);
@@ -213,30 +213,36 @@ namespace lachugin
       }
     }
 
-    for (size_t i = 0; i < result.size; i++)
-    {
-      for (size_t j = i + 1; j < result.size; j++)
-      {
-        if (result.data[j].id < result.data[i].id)
-        {
-          MeetInfo temp = result.data[i];
-          result.data[i] = result.data[j];
-          result.data[j] = temp;
-        }
-        else if (result.data[j].id == result.data[i].id && result.data[j].time < result.data[i].time)
-        {
-          MeetInfo temp = result.data[i];
-          result.data[i] = result.data[j];
-          result.data[j] = temp;
-        }
-      }
-    }
+    sortMeetInfos(result);
+
     for (size_t i = 0; i < result.size; i++)
     {
       std::cout << result.data[i].id << ' ' << result.data[i].time << '\n';
     }
 
     clearVector(result);
+  }
+
+  void sortMeetInfos(Vector< MeetInfo >& infos)
+  {
+    for (size_t i = 0; i < infos.size; i++)
+    {
+      for (size_t j = i + 1; j < infos.size; j++)
+      {
+        if (infos.data[j].id < infos.data[i].id)
+        {
+          MeetInfo temp = infos.data[i];
+          infos.data[i] = infos.data[j];
+          infos.data[j] = temp;
+        }
+        else if (infos.data[j].id == infos.data[i].id && infos.data[j].time < infos.data[i].time)
+        {
+          MeetInfo temp = infos.data[i];
+          infos.data[i] = infos.data[j];
+          infos.data[j] = temp;
+        }
+      }
+    }
   }
 
 }
