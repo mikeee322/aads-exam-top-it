@@ -56,6 +56,12 @@ namespace lachugin
     vector.size = 0;
     vector.capacity = 0;
   }
+
+  template< class T >
+  bool emptyVector(const Vector< T >& vector)
+  {
+    return vector.size == 0;
+  }
 }
 
 #endif
