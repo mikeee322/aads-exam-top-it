@@ -20,6 +20,7 @@ namespace lachugin
   void redesc(Vector< Person >& persons, size_t id, const std::string& info);
   void anons(const Vector< Person >& persons);
   void outPersons(const Vector< Person >& persons, const std::string& filename);
+  void meets(const Vector< Meeting >& meetings, size_t id);
 
 }
 

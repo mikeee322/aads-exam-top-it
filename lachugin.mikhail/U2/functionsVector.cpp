@@ -190,4 +190,53 @@ namespace lachugin
     pushBack(meetings, meeting);
   }
 
+  void lachugin::meets(const Vector< Meeting >& meetings, size_t id)
+  {
+    Vector< MeetInfo > result;
+    initVector(result);
+
+    for (size_t i = 0; i < meetings.size; i++)
+    {
+      if (meetings.data[i].firstId == id)
+      {
+        MeetInfo info;
+        info.id = meetings.data[i].secondId;
+        info.time = meetings.data[i].time;
+        pushBack(result, info);
+      }
+      else if (meetings.data[i].secondId == id)
+      {
+        MeetInfo info;
+        info.id = meetings.data[i].firstId;
+        info.time = meetings.data[i].time;
+        pushBack(result, info);
+      }
+    }
+
+    for (size_t i = 0; i < result.size; i++)
+    {
+      for (size_t j = i + 1; j < result.size; j++)
+      {
+        if (result.data[j].id < result.data[i].id)
+        {
+          MeetInfo temp = result.data[i];
+          result.data[i] = result.data[j];
+          result.data[j] = temp;
+        }
+        else if (result.data[j].id == result.data[i].id && result.data[j].time < result.data[i].time)
+        {
+          MeetInfo temp = result.data[i];
+          result.data[i] = result.data[j];
+          result.data[j] = temp;
+        }
+      }
+    }
+    for (size_t i = 0; i < result.size; i++)
+    {
+      std::cout << result.data[i].id << ' ' << result.data[i].time << '\n';
+    }
+
+    clearVector(result);
+  }
+
 }
