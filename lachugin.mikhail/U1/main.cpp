@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
   if (argc > 3)
   {
     std::cerr << "Too many args\n";
-    return 1;
+    return 0;
   }
 
   for (int i = 1; i < argc; ++i)
