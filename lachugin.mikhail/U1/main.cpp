@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
       inputFile.open(arg.substr(3));
       if (!inputFile)
       {
-        return 2;
+        return 4;
       }
       input = &inputFile;
       hasInput = true;
@@ -107,4 +107,5 @@ int main(int argc, char* argv[])
     std::cerr << success << ' ' << ignored << '\n';
   }
   delete[] persons;
+  return 0;
 }
