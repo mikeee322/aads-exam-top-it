@@ -1,2 +1,63 @@
-int main(){
+#include "functions.hpp"
+#include "Person.hpp"
+#include <iostream>
+#include <fstream>
+
+int main(int argc, char* argv[])
+{
+  lachugin::Person* persons = nullptr;
+  size_t size = 0;
+  size_t capacity = 0;
+  std::istream* input = &std::cin;
+  std::ostream* output = &std::cout;
+  std::ifstream inputFile;
+  std::ofstream outputFile;
+  bool hasInput = false;
+  bool hasOutput = false;
+
+  if (argc > 3)
+  {
+    return 1;
+  }
+
+  for (int i = 1; i < argc; i++)
+  {
+    std::string arg = argv[i];
+    if (arg.substr(0, 3) == "in:")
+    {
+      if (hasInput)
+      {
+        return 1;
+      }
+      inputFile.open(arg.substr(3));
+      if (!inputFile)
+      {
+        return 2;
+      }
+      input = &inputFile;
+      hasInput = true;
+    }
+
+    else if (arg.substr(0, 4) == "out:")
+    {
+      if (hasOutput)
+      {
+        return 1;
+      }
+      outputFile.open(arg.substr(4));
+      if (!outputFile)
+      {
+        return 2;
+
+      }
+      output = &outputFile;
+      hasOutput = true;
+    }
+    else
+    {
+      return 1;
+    }
+  }
+
+
 }
