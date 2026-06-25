@@ -113,4 +113,16 @@ namespace lachugin
     }
   }
 
+  void redesc(Vector< Person >& persons, size_t id, const std::string& info)
+  {
+    Person* person = findPerson(persons, id);
+    if (person == nullptr)
+    {
+      std::cout << "INVALID COMMAND\n";
+      return;
+    }
+
+    person->info = info;
+  }
+
 }
