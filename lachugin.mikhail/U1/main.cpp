@@ -59,5 +59,25 @@ int main(int argc, char* argv[])
     }
   }
 
+  size_t success = 0;
+  size_t ignored = 0;
+  std::string line;
+  while (std::getline(*input, line))
+  {
+    lachugin::Person person;
+    if (!parseLine(line, person))
+    {
+      ignored++;
+      continue;
+    }
+
+    if (containsId(persons, size, person.id))
+    {
+      ignored++;
+      continue;
+    }
+    pushBack(persons, size, capacity, person);
+    success++;
+  }
 
 }
